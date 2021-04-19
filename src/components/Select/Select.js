@@ -9,10 +9,33 @@ const Select = ({ label, value, onChange, children }) => {
   const displayedValue = getDisplayedValue(value, children);
 
   return (
-    <select value={value} onChange={onChange}>
+    <Wrapper value={value} onChange={onChange}>
       {children}
-    </select>
+      <Icon id="chevron-down" />
+    </Wrapper>
   );
 };
+
+const Wrapper = styled.select`
+  background-color: ${COLORS.transparentGray15};
+  border: transparent;
+  border-radius: 8px;
+  color: ${COLORS.gray700};
+  padding: 0.75rem 1rem;
+  font-size: 16px;
+  font: 'Roboto', sans-serif;
+
+  ::after {
+    content: 'a';
+  }
+
+  :focus {
+    outline: inherit;
+  }
+
+  :hover {
+    color: ${COLORS.black}
+  }
+`
 
 export default Select;
